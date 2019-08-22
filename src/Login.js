@@ -2,17 +2,17 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./App.scss";
 import User from "./models/user";
+import userService from "./services/user.service";
 
 class Login extends React.Component {
   send(values) {
-    fetch("http://localhost:4000/api/user/login", {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then(response=>response.json())
-    .then(response=>document.cookie="user="+ response.token);
+    userService
+      .login(values.email, values.password)
+      .then(response => response.json())
+      .then(response =>{ 
+        document.cookie = "user=" + response.token
+        this.props.history.push('/');
+    });
   }
 
   render() {
@@ -21,7 +21,7 @@ class Login extends React.Component {
         <Formik
           initialValues={{
             email: "",
-            password: ""
+            password: "",
           }}
           onSubmit={this.send.bind(this)}
         >

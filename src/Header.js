@@ -9,6 +9,7 @@ class Header extends React.Component {
   render() {
     return (
       <header>
+      <div className="nav-bar">
         <ul>
           <li>
             <Link to="/">Homepage</Link>
@@ -23,6 +24,7 @@ class Header extends React.Component {
             <Link to="/profile">Profile</Link>
           </li>
         </ul>
+        </div>
       </header>
     );
   }

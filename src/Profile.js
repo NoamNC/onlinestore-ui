@@ -1,19 +1,18 @@
 import React from "react";
+import UserService from './services/user.service';
 
 class Profile extends React.Component {
     constructor(props){
         super(props);
+        this.state={
+          profile: []
+        }
     }
   componentDidMount() {
-      const token = document.cookie.split('user=')[1];
-    fetch("http://localhost:4000/api/user/me", {
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': token
-      }
-    }).then(response=>response.json())
+      UserService.me()
+      .then(response=>response.json())
     .then(user=>{
-        console.log(user);
+        this.setState({user});
     });
   }
 
@@ -21,6 +20,7 @@ class Profile extends React.Component {
     return (
       <div className="container">
           <h1>User</h1>
+          <span>{this.state.profile.name}</span>
       </div>
     );
   }
