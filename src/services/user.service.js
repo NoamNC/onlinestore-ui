@@ -14,6 +14,10 @@ me(){
     return this.send('GET', '/user/me');
 }
 
+edit(id, user){
+    return this.send('POST',`/user/${id}`,user);
+}
+
 }
 
 export default new UserService();
