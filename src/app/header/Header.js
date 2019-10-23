@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.scss";
 import CartBtn from "./CartBtn/CartBtn";
 import cookie from "react-cookies";
 
