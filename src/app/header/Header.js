@@ -1,54 +1,53 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './header.scss';
-import UserService from "../../services/user.service";
+import { Link } from "react-router-dom";
+import "./Header.scss";
 import CartBtn from "./CartBtn/CartBtn";
-
+import cookie from "react-cookies";
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       loggedIn: false
-
     };
   }
-
-  componentDidMount() {
-    UserService.me()
-      .then(response => response.json())
-      .then(()=> {
-        this.setState({loggedIn: true});
-      });
-}
+// search react how render component conditionly
+//add logout to user services
+  logout(){
+    cookie.remove('user');
+  }
 
   render() {
     return (
-      <header>
-      <div >
-        <ul className="nav">
-          <div className="img">
-          </div>
-          <li className="link">
-            <Link to="/">Homepage</Link>
-          </li>
-          <li className="link"> 
-            <Link to="/profile">Profile</Link>
-          </li>
-          <li className="link">
+      <header className="sticky-top">
+        <div className="header-container">
+          <img className="header-logo" src="http://localhost:3000/images/mystore_logo.jpg" alt=""></img>
+          <ul className="menu">
+            <li className="link  ">
+              <Link to="/">Homepage</Link>
+            </li>
+
+            <li className="link">
+              <Link to="/profile">Profile</Link>
+            </li>
+
+            <li className="link">
               <Link to="/register">Register</Link>
             </li>
+
             <li className="link">
-                <Link to="/login">Login</Link>
-              </li>
-              <li className="link">
-                <Link to="/cart">Cart<CartBtn></CartBtn></Link>
-              </li>
-        </ul>
+              <Link to="/login">Login</Link>
+            </li>
+            <li className="link">
+              <Link to="/cart">
+                <CartBtn />
+              </Link>
+            </li>
+          </ul>
+          <button onClick={this.logout.bind(this)}>LogOut</button>
         </div>
       </header>
-    )
+    );
   }
-
 }
 export default Header;

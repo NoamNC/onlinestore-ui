@@ -1,20 +1,24 @@
-import React, { Component } from 'react';
-import cartService from "../../../services/cart.sevice";
+import React from 'react';
+import './CartBtn.scss'
+import {connect} from 'react-redux';
 
 
-export class CartBtn extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            qty: cartService.getAll().length
-        }
-    }
+class CartButton extends React.Component {
 
-    render() {
-        return (
-            <span class="badge badge-secondary">{this.state.qty}</span>
-        )
-    }
+
+
+	render() {
+		return (
+			<div className="CartButton badge badge-light">
+				Cart: {this.props.itemCount}
+			</div>
+		);
+	}
 }
 
-export default CartBtn;
+const mapStateToProps =(state)=>{
+	return {
+		itemCount: state.cartItemsCount
+	};
+}
+export default connect(mapStateToProps)(CartButton); 

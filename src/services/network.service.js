@@ -1,29 +1,35 @@
-import cookie from 'react-cookies'
+import cookie from "react-cookies";
+import config from '../app/enviroment/index';
 
+const baseUrl = config.url + config.api;
 export default class Network {
-
-
-    getHeaders() {
-        let headers = {
-            'Content-Type': 'application/json'
-        };
-        if(this.getToken()) {
-            headers.Authorization = this.getToken();
-        }
-        return headers;
+  getHeaders(customHeaders) {
+    let headers = {};
+    if (this.getToken()) {
+      headers.Authorization = this.getToken();
     }
-
-    getToken() {
-        return cookie.load('user');
+    for (let prop in customHeaders) {
+      headers[prop] = customHeaders[prop];
     }
+    return headers;
+  }
+  getToken() {
+    return cookie.load("user");
+  }
 
-    send(method, url, data) {
-        console.log(data);
-        console.log(method);
-        return fetch('http://localhost:4000/api' + url, {
-            method: method,
-            body: JSON.stringify(data),
-            headers: this.getHeaders()
-        });
-    }
+  send(method, url, data) {
+    return fetch(baseUrl + url, {
+      method: method,
+      body: JSON.stringify(data),
+      headers: this.getHeaders({'Content-Type': 'application/sjon'})
+    });
+  }
+
+  sendMultipart(method, url, data) {
+    return fetch(baseUrl + url, {
+      method: method,
+      body: data,
+      headers: this.getHeaders()
+    });
+  }
 }

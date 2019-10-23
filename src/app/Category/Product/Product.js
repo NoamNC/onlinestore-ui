@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import "./Product.scss";
 import productSevice from '../../../services/product.sevice';
-import cartService from '../../../services/cart.sevice';
+import {connect} from 'react-redux';
+import {addToCart} from '../../redux/actions'
 
 
 export class Product extends Component {
@@ -19,7 +20,7 @@ constructor(props){
 
     //i need fix add quantity
     addToCart(){
-        cartService.add(this.state.product.id, 1);
+        this.props.addToCart(this.state.product.id);
     }
     
     render() {
@@ -34,4 +35,6 @@ constructor(props){
     }
 }
 
-export default Product;
+export default connect(null, {
+    addToCart
+})(Product);

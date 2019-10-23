@@ -46,7 +46,7 @@ class Profile extends React.Component {
         <img
           src={require("./images/generic-profile-picture.png")}
           className="profile-pic"
-        />
+         alt=""/>
         </div>
         <div className="profile-body">
           <h3>info:</h3>
@@ -82,7 +82,7 @@ class Profile extends React.Component {
           <img
             src={require("./images/generic-profile-picture.png")}
             className="profile-pic"
-          />
+           alt=""/>
           </div>
           <div className="profile-body">
             <h3>Edit info:</h3>

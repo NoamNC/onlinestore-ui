@@ -7,7 +7,7 @@ class Homepage extends React.Component {
 
   render() {
     return (
-        <div className="main">
+        <div className="container">
           <section className="homepage">
         <div className="container">
           <div className="homepage-content">
