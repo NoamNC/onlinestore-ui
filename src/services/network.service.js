@@ -21,7 +21,7 @@ export default class Network {
     return fetch(baseUrl + url, {
       method: method,
       body: JSON.stringify(data),
-      headers: this.getHeaders({'Content-Type': 'application/sjon'})
+      headers: this.getHeaders({'Content-Type': 'application/json'})
     });
   }
 
