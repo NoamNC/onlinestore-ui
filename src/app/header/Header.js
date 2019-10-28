@@ -20,7 +20,7 @@ class Header extends React.Component {
     return (
       <header className="sticky-top">
         <div className="header-container">
-          <img className="header-logo" src="http://localhost:3000/images/mystore_logo.jpg" alt=""></img>
+          {/* <img className="header-logo" src="http://localhost:3000/images/mystore_logo.jpg" alt=""></img> */}
           <ul className="menu">
             <li className="link  ">
               <Link to="/">Homepage</Link>
