@@ -1,0 +1,13 @@
+.product-product-container{
+    display: flex;
+
+    .product-details-container{
+        margin-left: 20px;
+
+    }
+
+    .product-product-price, .product-product-des, .btn-add-to-cart{
+        margin-top: 20px;
+    } 
+
+}

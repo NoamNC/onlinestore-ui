@@ -2,6 +2,8 @@ import React from 'react';
 import './Cart.scss';
 import CartService from '../../services/cart.sevice';
 import ProductService from '../../services/product.sevice';
+import {connect} from 'react-redux';
+import {removeFromCart} from '../redux/actions';
 class Cart extends React.Component {
 	constructor(props) {
 		super(props);
@@ -20,7 +22,6 @@ class Cart extends React.Component {
 		ProductService.getByIds(ids)
 			.then(res => res.json())
 			.then(products => {
-				console.log(products)
 				products = this.addQuantities(products, cartProducts);
 				this.setState({products});
 			})
@@ -44,13 +45,24 @@ class Cart extends React.Component {
 
 	remove(productId) {
 		CartService.remove(productId);
+		this.props.removeFromCart();
 		this.loadCart();
 	}
 
 	render() {
 		return (
-			<div>
+			<div className="cart-container">
 				<h1>Cart</h1>
+				{this.state.products.length===0?
+				<div className="empty-cart-container">
+				<img src="/images/empty-cart-logo.png"
+				alt=""
+				className="empty-cart-logo"
+				/>
+				<p>Your cart is empty</p>
+				<p>add something to make it happy :)</p>
+				</div>
+				:
 				<table className="table table-striped">
 					<thead>
 						<tr>
@@ -81,10 +93,16 @@ class Cart extends React.Component {
 						</tr>
 					</tfoot>
 				</table>
-				
+	}
 			</div>
         );
     }
 }
-export default Cart;
+
+const mapStateToProps =(state)=>{
+	return {
+		itemCount: state.cartItemsCount
+	};
+}
+export default connect(mapStateToProps,{removeFromCart})(Cart); 
         

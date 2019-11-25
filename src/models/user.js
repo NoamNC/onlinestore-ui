@@ -24,5 +24,7 @@ export default yup.object().shape({
     .string()
     .required()
     .min(9)
-    .max(13)
+    .max(13),
+    isAdmin: yup
+    .boolean()
 });

@@ -1,11 +1,13 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { BrowserRouter as Link } from "react-router-dom";
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "../App.scss";
 import userService from "../../services/user.service";
 import './login.scss';
-import cookie from 'react-cookies'
+import cookie from 'react-cookies';
+import {connect} from 'react-redux';
+import {LogIn} from '../redux/actions';
+
 
 
 
@@ -23,13 +25,19 @@ class Login extends React.Component {
       .login(values.email, values.password)
       .then(response => response.json())
       .then(response =>{ 
+        if(response.token){
         const twoWeeksTime=60*60*24*14;
         cookie.save('user',response.token, {path:'/', maxAge: twoWeeksTime });
         this.setState({submiting: false});
-        this.props.history.push('/profile');
+        this.props.LogIn();
+        this.props.history.push('/');
+      }
+      else{
+        alert("wrong email or password");
+      }
     })
     .catch(err=>console.log(err));
-  }
+}
 
   render() {
     return (
@@ -88,5 +96,6 @@ class Login extends React.Component {
     );
   }
 }
-
-export default Login;
+export default connect(null, {
+  LogIn
+})(Login);

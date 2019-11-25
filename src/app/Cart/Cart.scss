@@ -1,0 +1,13 @@
+.cart-container ,.empty-cart-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    .empty-cart-logo{
+        height: 60vh;
+        width: 60vw;
+    }
+
+}

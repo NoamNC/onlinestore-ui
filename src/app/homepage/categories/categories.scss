@@ -1,0 +1,38 @@
+.categories-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  border: solid black 1px;
+  width: calc(100vw - 60px);
+  margin-left: 30px;
+  margin-right: 30px;
+ 
+
+    .category-container{
+      display: flex;
+      flex-direction: column;
+      width: calc(20% - 20px);
+      border: solid blue 1px;
+      color:black;
+      margin-bottom: 20px;
+      overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+      transition: transform .5s ease;
+
+        .category-title{
+            color: black;
+         
+        }
+
+        .category-image{
+            transition: transform .5s ease;
+        }
+
+    }
+
+    
+    .category-container:hover img{
+      transform: scale(1.5);
+    }
+
+  }

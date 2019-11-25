@@ -1,0 +1,21 @@
+.homepage-container{
+display: flex;
+justify-content: center;
+
+    .homepage-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+       
+
+        .banner-container{
+            height: 50vh;
+            width: 80%;
+            border: solid green 1px;
+            margin:50px;
+        }
+    }
+}
+
+
+

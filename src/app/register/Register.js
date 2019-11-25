@@ -37,7 +37,8 @@ class Register extends React.Component {
             lastName: "",
             email: "",
             password: "",
-            phone: ""
+            phone: "",
+            isAdmin: false
           }}
           validationSchema={User}
           onSubmit={this.send.bind(this)}

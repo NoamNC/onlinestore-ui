@@ -27,6 +27,18 @@ getAll(){
     return this.send('GET', '/product');
 }
 
+edit(id, product){
+    const data = new FormData();
+    for (let prop in product) {
+      data.append(prop, product[prop]);
+    }
+    return this.sendMultipart('POST',`/product/${id}`, data);
+  }
+
+  remove(id){
+      return this.send('DELETE', `/product/${id}`);
+  }
+
 }
 
 export default new ProductService();

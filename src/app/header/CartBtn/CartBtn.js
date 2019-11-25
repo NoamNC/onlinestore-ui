@@ -10,7 +10,7 @@ class CartButton extends React.Component {
 	render() {
 		return (
 			<div className="CartButton badge badge-light">
-				Cart: {this.props.itemCount}
+				({this.props.itemCount})
 			</div>
 		);
 	}
