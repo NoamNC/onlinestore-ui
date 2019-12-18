@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import userService from "../../../services/user.service";
 
 export class Users extends Component {
@@ -50,7 +50,7 @@ export class Users extends Component {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Id</th>
+              {/* <th>Id</th> */}
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
@@ -63,7 +63,7 @@ export class Users extends Component {
             {this.state.users.map(user => {
               return (
                 <tr key={user.id}>
-                  <td>{user.id.substring(user.id.length - 6)}</td>
+                  {/* <td>{user.id.substring(user.id.length - 6)}</td> */}
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.email}</td>

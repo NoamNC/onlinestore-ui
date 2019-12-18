@@ -37,7 +37,7 @@ class CreateProduct extends React.Component {
 				ProductService.create(values)
 					.then(() => {
 					this.setState({submitting: false})
-					if(values.categoryId==this.props.match.params.id){
+					if(values.categoryId===this.props.match.params.id){
 						this.props.history.push(`/admin/categories/${values.categoryId}/products`);
 					}else{
 					this.props.history.push('/admin/products');

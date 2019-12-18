@@ -4,7 +4,7 @@ import User from "../../../models/user";
 import UserService from "../../../services/user.service";
 import "../profile.scss";
 
-const genericProfilePic = require("../images/generic-profile-picture.png");
+// const genericProfilePic = require("../images/generic-profile-picture.png");
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -12,7 +12,6 @@ class EditProfile extends React.Component {
     this.state = {
       user: [],
       submitting: false,
-      changeImage: false
     };
   }
   componentDidMount() {
@@ -23,20 +22,13 @@ class EditProfile extends React.Component {
       });
   }
 
-  changeImageState() {
-    this.setState({ changeImage: !this.state.changeImage });
-  }
+
 
   send(user) {
-    console.log("d");
     this.setState({ submitting: true });
-    user.changeImage = this.state.changeImage;
     UserService.editMe(this.state.user._id, user)
       .then(res => res.json())
       .then(user => {
-        if (typeof user.image == null) {
-          user.image = genericProfilePic;
-        }
         this.setState({ user });
         this.setState({ submitting: false });
         this.props.history.push("/profile");
@@ -50,11 +42,11 @@ class EditProfile extends React.Component {
           <div className="profile-content">
             <h2>{`${this.state.user.firstName} ${this.state.user.lastName}`}</h2>
             <div className="img-container">
-              <img
+              {/* <img
                 src={require("../images/generic-profile-picture.png")}
                 className="profile-pic"
                 alt=""
-              />
+              /> */}
             </div>
             <div className="profile-body">
               <h3>Edit info:</h3>

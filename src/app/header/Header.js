@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.scss";
+import "./header.scss";
 import { Link } from "react-router-dom";
 import CartBtn from "./CartBtn/CartBtn";
 import cookie from "react-cookies";
@@ -15,9 +15,9 @@ import { LogOut } from "../redux/actions";
 // import storeLogo from './images/store-logo-png-3.png';
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   // search react how render component conditionly
   //add logout to user services
   logout() {
